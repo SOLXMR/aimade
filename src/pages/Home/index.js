@@ -710,6 +710,30 @@ const CopyNotification = styled(motion.div)`
   z-index: 1000;
 `;
 
+const ViewChartButton = styled(motion.button)`
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background: transparent;
+  border: 2px solid ${({ theme }) => theme.colors.secondary}80;
+  color: ${({ theme }) => theme.colors.secondary};
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.secondary}1a;
+    border-color: ${({ theme }) => theme.colors.secondary};
+    text-shadow: 0 0 5px ${({ theme }) => theme.colors.secondary}80;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+`;
+
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [hackerName, setHackerName] = useState('');
@@ -905,6 +929,17 @@ const Home = () => {
           >
             Copy CA
           </CopyButton>
+
+          <ViewChartButton
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.open('https://pump.fun/coin/5reTiMoyT5mCcBAWCkXzU4mZfFsEejvz1493zyQppump', '_blank')}
+          >
+            View Chart
+          </ViewChartButton>
 
           <ScrollPrompt
             initial={{ opacity: 0 }}
