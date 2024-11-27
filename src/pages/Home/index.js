@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
 import { Stars, OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import gsap from 'gsap';
+import { saveWalletAddress } from '../../services/walletService';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -713,14 +714,19 @@ const Home = () => {
       // Get the public key
       const publicKey = resp.publicKey.toString();
       
+      // Save to Firebase
+      try {
+        await saveWalletAddress(publicKey);
+        console.log('Successfully saved wallet to Firebase');
+      } catch (firebaseError) {
+        console.error('Error saving to Firebase:', firebaseError);
+      }
+      
       // Store the public key
       setWalletAddress(publicKey);
       
       // Close the modal
       setShowModal(false);
-
-      // Optional: You can add a success message or additional actions here
-      console.log('Connected to wallet:', publicKey);
     } catch (error) {
       console.error('Error connecting to wallet:', error);
       setError(error.message);
