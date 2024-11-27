@@ -715,8 +715,8 @@ const ViewChartButton = styled(motion.button)`
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
   background: transparent;
-  border: 2px solid ${({ theme }) => theme.colors.secondary}80;
-  color: ${({ theme }) => theme.colors.secondary};
+  border: 2px solid ${({ theme }) => theme.colors.primary}80;
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -724,9 +724,9 @@ const ViewChartButton = styled(motion.button)`
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.secondary}1a;
-    border-color: ${({ theme }) => theme.colors.secondary};
-    text-shadow: 0 0 5px ${({ theme }) => theme.colors.secondary}80;
+    background: ${({ theme }) => theme.colors.primary}1a;
+    border-color: ${({ theme }) => theme.colors.primary};
+    text-shadow: 0 0 5px ${({ theme }) => theme.colors.primary}80;
   }
 
   &:active {

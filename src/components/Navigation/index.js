@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getDatabase, ref, onValue } from 'firebase/database';
 
 const Nav = styled.nav`
   position: fixed;
@@ -34,6 +35,44 @@ const Logo = styled(Link)`
   &:hover {
     color: ${({ theme }) => theme.colors.accent};
     text-shadow: ${({ theme }) => theme.shadows.neon(theme.colors.accent)};
+  }
+`;
+
+const OnlineCounter = styled.div`
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: ${({ theme }) => theme.colors.primary};
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: ${({ theme }) => theme.colors.primary};
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 `;
 
@@ -107,6 +146,7 @@ const Navigation = ({ onDisconnect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [onlineCount, setOnlineCount] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,6 +155,26 @@ const Navigation = ({ onDisconnect }) => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const db = getDatabase();
+    const walletsRef = ref(db, 'wallets');
+
+    const unsubscribe = onValue(walletsRef, (snapshot) => {
+      if (snapshot.exists()) {
+        let count = 0;
+        snapshot.forEach((childSnapshot) => {
+          const wallet = childSnapshot.val();
+          if (wallet.online === true) {
+            count++;
+          }
+        });
+        setOnlineCount(count);
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const menuVariants = {
@@ -152,6 +212,9 @@ const Navigation = ({ onDisconnect }) => {
       backdropFilter: scrolled ? 'blur(10px)' : 'none',
     }}>
       <NavContainer>
+        <OnlineCounter>
+          Devs Online: {onlineCount}
+        </OnlineCounter>
         <Logo to="/">CyberCoin</Logo>
         <MenuButton onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? '×' : '☰'}
