@@ -143,9 +143,7 @@ const Navigation = ({ onDisconnect }) => {
     { to: '/lore', label: 'Lore' },
     { to: '/features', label: 'Features' },
     { to: '/team', label: 'Team' },
-    { to: '/roadmap', label: 'Roadmap' },
-    { to: '/games', label: 'Games' },
-    { to: '/wallet', label: 'Wallet' },
+    { to: '/games', label: 'Games' }
   ];
 
   return (

@@ -22,9 +22,87 @@
     <meta property="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+      .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        border-top: 1px solid rgba(0, 255, 255, 0.1);
+        padding: 1rem 0;
+        text-align: center;
+        font-family: 'Share Tech Mono', monospace;
+        z-index: 10;
+        mix-blend-mode: screen;
+      }
+      
+      body {
+        padding-bottom: 100px;
+      }
+      
+      #root {
+        min-height: calc(100vh - 100px);
+        position: relative;
+      }
+      
+      .social-links {
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 11;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0 1rem;
+      }
+      
+      .social-links a {
+        color: #00ffff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        white-space: nowrap;
+      }
+      
+      .social-links a:hover {
+        color: #ff00ff;
+        text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+      }
+      
+      .copyright {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        position: relative;
+        z-index: 11;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      }
+      
+      .copyright span {
+        color: #00ffff;
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    
+    <footer class="footer">
+      <div class="social-links">
+        <a href="https://x.com/CyberCoinSolana" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://github.com/SOLXMR/aimade" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://pump.fun/" target="_blank" rel="noopener noreferrer">Pump.fun</a>
+        <a href="https://t.me/CyberCoinSolana" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="https://dexscreener.com/solana/" target="_blank" rel="noopener noreferrer">DexScreener</a>
+      </div>
+      <div class="copyright">
+        © 2024 <span>CyberCoin</span>. All Rights Reserved. Enter the Digital Abyss.
+      </div>
+    </footer>
   </body>
 </html> 

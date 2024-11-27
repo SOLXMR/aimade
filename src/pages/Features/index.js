@@ -131,92 +131,92 @@ const features = [
   {
     id: 1,
     icon: '🧠',
-    title: 'AI Integration',
-    description: 'Advanced artificial intelligence systems powering token mechanics and community interactions.',
-    details: `Our AI integration goes beyond simple automation. The CyberCoin protocol utilizes cutting-edge machine learning algorithms to:
+    title: 'Hidden Developer Wallet',
+    description: 'A mysterious wallet awaits discovery within the depths of our website.',
+    details: `The developer wallet isn't just a wallet - it's a digital treasure waiting to be claimed:
 
-    • Analyze market sentiment and adjust token mechanics in real-time
-    • Generate unique NFT artwork based on holder behavior
-    • Create personalized engagement experiences for community members
-    • Predict and prevent potential security threats
-    • Optimize gas usage during high-traffic periods
+    • Hidden somewhere in the website's code or visuals
+    • Multiple clues scattered throughout the interface
+    • Requires wit and technical skills to discover
+    • No hints from the team - fair game for all
+    • First to find it, owns it
 
-    The AI system learns and evolves with the community, creating a truly dynamic ecosystem that becomes more efficient over time.`
+    Will you be the one to crack the code and claim your share of the power?`
   },
   {
     id: 2,
-    icon: '🔐',
-    title: 'Quantum-Resistant Security',
-    description: 'Next-generation cryptographic protocols designed to withstand quantum computing attacks.',
-    details: `CyberCoin's security infrastructure is built for the future. Our quantum-resistant features include:
+    icon: '🎭',
+    title: 'Pure Meme Power',
+    description: 'No complicated mechanics, just pure community-driven meme energy.',
+    details: `We've stripped away the complexity to focus on what matters:
 
-    • Post-quantum cryptographic algorithms
-    • Multi-layered encryption protocols
-    • Quantum entropy source for true randomness
-    • Adaptive security measures that evolve with threats
-    • Regular security audits and updates
+    • 100% community-owned token
+    • No fancy tokenomics or gimmicks
+    • Powered by memes and community spirit
+    • Zero private allocations
+    • Fair launch for everyone
 
-    We're not just securing today's transactions - we're preparing for tomorrow's challenges.`
+    CyberCoin is what you make of it - pure, simple, and powerful.`
   },
   {
     id: 3,
     icon: '🎮',
-    title: 'Interactive Gameplay',
-    description: 'Earn rewards by solving puzzles and participating in the evolving narrative.',
-    details: `Our gameplay mechanics transform holding crypto into an immersive experience:
+    title: 'Digital Treasure Hunt',
+    description: 'Explore, decode, and discover secrets hidden throughout the website.',
+    details: `Our website is more than just a website - it's a playground of secrets:
 
-    • Daily challenges and puzzles with token rewards
-    • Hidden messages within transaction data
-    • Community-driven narrative development
-    • Real-time leaderboards and achievements
-    • Special events tied to market milestones
+    • Multiple layers of hidden content
+    • Cryptographic puzzles and challenges
+    • Real rewards for those who solve them
+    • New secrets added regularly
+    • Community hints and collaboration
 
-    Every interaction with CyberCoin is a chance to discover something new and earn rewards.`
+    Every click could lead to a discovery, every page could hide a secret.`
   },
   {
     id: 4,
     icon: '🌐',
-    title: 'Decentralized Governance',
-    description: 'Community-driven decision making through advanced DAO mechanisms.',
-    details: `Our governance system puts the power in the community's hands:
+    title: 'Matrix Challenges',
+    description: 'Navigate through our Matrix-inspired digital realm.',
+    details: `Dive deep into the digital abyss:
 
-    • Quadratic voting for fair representation
-    • Proposal templates for easy participation
-    • Automated execution of approved changes
-    • Transparent voting records on-chain
-    • Multiple voting mechanisms for different types of decisions
+    • Interactive Matrix-style challenges
+    • Hidden messages in the code rain
+    • Glitch effects hiding secrets
+    • Pattern recognition puzzles
+    • Cyberpunk-themed rewards
 
-    Every holder has a voice in shaping CyberCoin's future.`
+    The deeper you go, the more you'll find.`
   },
   {
     id: 5,
-    icon: '🔄',
-    title: 'Dynamic Tokenomics',
-    description: 'Self-adjusting economic model that responds to market conditions.',
-    details: `Our tokenomics model uses advanced algorithms to maintain stability:
+    icon: '👥',
+    title: 'Community Power',
+    description: 'A token truly owned and driven by its community.',
+    details: `We believe in the power of community:
 
-    • Adaptive burn rate based on market activity
-    • Dynamic staking rewards
-    • Automatic liquidity management
-    • Anti-whale mechanisms
-    • Community reward pools
+    • No team allocations
+    • No venture capital
+    • No private sales
+    • 100% community owned
+    • Everyone has equal opportunity
 
-    The system continuously optimizes for long-term sustainability.`
+    The power is in your hands - literally.`
   },
   {
     id: 6,
-    icon: '🎨',
-    title: 'Generative NFT System',
-    description: 'AI-powered NFT creation based on holder activity and community events.',
-    details: `Our NFT system creates unique digital artifacts that evolve with the community:
+    icon: '🎲',
+    title: 'Ongoing Events',
+    description: 'Regular events and challenges for the community.',
+    details: `Stay engaged with regular community activities:
 
-    • AI-generated artwork based on blockchain activity
-    • Interactive NFTs that respond to holder behavior
-    • Collaborative community art projects
-    • Hidden features and upgrades
-    • Cross-chain compatibility
+    • Live treasure hunts
+    • Code breaking competitions
+    • Community puzzle solving
+    • Reward pools for winners
+    • Collaborative challenges
 
-    Each NFT tells a story and holds secrets waiting to be discovered.`
+    The hunt never ends - there's always something new to discover.`
   }
 ];
 

@@ -630,6 +630,46 @@ const MatrixEntry = ({ onComplete }) => {
   );
 };
 
+const Header = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Logo = styled.div`
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.colors.primary};
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  gap: 2rem;
+`;
+
+const NavLink = styled.a`
+  color: ${({ theme }) => theme.colors.text};
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary};
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+`;
+
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [hackerName, setHackerName] = useState('');
@@ -741,6 +781,13 @@ const Home = () => {
     // Add any post-animation actions here
   };
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <HomeContainer>
       <BackgroundEffects>
@@ -812,16 +859,12 @@ const Home = () => {
               <StatLabel>Total Supply</StatLabel>
             </StatItem>
             <StatItem>
-              <StatValue>40%</StatValue>
-              <StatLabel>Community Pool</StatLabel>
+              <StatValue>100%</StatValue>
+              <StatLabel>Community Owned</StatLabel>
             </StatItem>
             <StatItem>
-              <StatValue>30%</StatValue>
-              <StatLabel>Liquidity</StatLabel>
-            </StatItem>
-            <StatItem>
-              <StatValue>20%</StatValue>
-              <StatLabel>Development</StatLabel>
+              <StatValue>YOURS</StatValue>
+              <StatLabel>Dev Wallet</StatLabel>
             </StatItem>
           </TokenStats>
         </Section>
@@ -829,7 +872,8 @@ const Home = () => {
         <Section>
           <SectionTitle>Core Features</SectionTitle>
           <SectionText>
-            Discover the unique features that make CyberCoin stand out in the crypto space.
+            Not just another memecoin - CyberCoin hides secrets within its digital realm.
+            Will you be the one to discover them?
           </SectionText>
           <Grid>
             <Card
@@ -839,8 +883,8 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h3>AI Integration</h3>
-              <p>Advanced artificial intelligence systems powering token mechanics and community interactions.</p>
+              <h3>Hidden Developer Wallet</h3>
+              <p>Somewhere in this website lies the key to the developer wallet. Find it, and claim your share of the power.</p>
             </Card>
             <Card
               whileHover={{ scale: 1.02 }}
@@ -849,8 +893,8 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h3>Deep Lore</h3>
-              <p>Immerse yourself in a rich narrative filled with mysteries, puzzles, and hidden rewards.</p>
+              <h3>Pure Meme Energy</h3>
+              <p>No fancy mechanics, no complicated tokenomics - just pure, unadulterated meme power and community vibes.</p>
             </Card>
             <Card
               whileHover={{ scale: 1.02 }}
@@ -859,8 +903,8 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h3>Community Governance</h3>
-              <p>Decentralized decision-making through advanced DAO mechanisms and AI assistance.</p>
+              <h3>Digital Treasure Hunt</h3>
+              <p>Explore the website, decode the clues, and join the race to uncover the secrets hidden within the code.</p>
             </Card>
           </Grid>
         </Section>
@@ -868,21 +912,47 @@ const Home = () => {
         <Section>
           <SectionTitle>Join the Revolution</SectionTitle>
           <SectionText>
-            Be part of something bigger than just another memecoin. CyberCoin represents
-            the fusion of artificial intelligence, blockchain technology, and human creativity.
+            This isn't just another memecoin – it's a digital treasure hunt waiting to be solved.
+            The developer wallet is hidden somewhere in this website, waiting for the worthy to discover it.
+            Will you be the one to crack the code and claim your share of the power?
+            Join us in this epic quest, where memes meet mystery, and every visitor could become a developer.
           </SectionText>
-          <CTAButton
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={walletAddress ? disconnectWallet : connectWallet}
-          >
-            {walletAddress ? 'Disconnect Wallet' : 'Connect Wallet'}
-          </CTAButton>
-          {walletAddress && (
-            <SectionText style={{ fontSize: '0.9rem', marginTop: '1rem' }}>
-              Connected: {walletAddress.slice(0, 4)}...{walletAddress.slice(-4)}
-            </SectionText>
-          )}
+          <Grid>
+            <Card
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3>The Hunt is On</h3>
+              <p>Explore every corner of the website. The developer wallet access could be anywhere – in the code, in the visuals, or hidden in plain sight.</p>
+            </Card>
+            <Card
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <h3>Community Power</h3>
+              <p>No VCs, no private sales, no complicated tokenomics. Just pure meme energy and a chance for anyone to become part of the developer team.</p>
+            </Card>
+          </Grid>
+          <div style={{ marginTop: '2rem' }}>
+            <CTAButton
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={walletAddress ? disconnectWallet : connectWallet}
+            >
+              {walletAddress ? 'Disconnect Wallet' : 'Connect Wallet'}
+            </CTAButton>
+            {walletAddress && (
+              <SectionText style={{ fontSize: '0.9rem', marginTop: '1rem' }}>
+                Connected: {walletAddress.slice(0, 4)}...{walletAddress.slice(-4)}
+              </SectionText>
+            )}
+          </div>
         </Section>
       </ContentContainer>
 
