@@ -5,10 +5,26 @@ import { Canvas } from '@react-three/fiber';
 import { Stars, OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
 import gsap from 'gsap';
 import { saveWalletAddress } from '../../services/walletService';
+import { Link } from 'react-router-dom';
 
 const HomeContainer = styled.div`
   position: relative;
   min-height: 100vh;
+
+  .copy-success {
+    position: fixed;
+    top: 80px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid ${({ theme }) => theme.colors.primary}4d;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: ${({ theme }) => theme.colors.primary};
+    font-family: 'Share Tech Mono', monospace;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+  }
 `;
 
 const BackgroundEffects = styled.div`
@@ -639,7 +655,7 @@ const Header = styled.header`
   padding: 1rem 2rem;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  z-index: 100;
+  z-index: 1002;
   border-bottom: 1px solid rgba(0, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
@@ -656,14 +672,18 @@ const Logo = styled.div`
 const Nav = styled.nav`
   display: flex;
   gap: 2rem;
+  z-index: 1002;
+  position: relative;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   color: ${({ theme }) => theme.colors.text};
   text-decoration: none;
   font-family: 'Share Tech Mono', monospace;
   transition: all 0.3s ease;
   cursor: pointer;
+  z-index: 1002;
+  position: relative;
 
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
@@ -697,7 +717,7 @@ const CopyButton = styled(motion.button)`
 
 const CopyNotification = styled(motion.div)`
   position: fixed;
-  top: 20px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.8);
@@ -939,6 +959,18 @@ const Home = () => {
             onClick={() => window.open('https://pump.fun/coin/5reTiMoyT5mCcBAWCkXzU4mZfFsEejvz1493zyQppump', '_blank')}
           >
             View Chart
+          </ViewChartButton>
+
+          <ViewChartButton
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.location.href = '/casino'}
+            style={{ marginTop: '1rem' }}
+          >
+            Enter Casino 🎲
           </ViewChartButton>
 
           <ScrollPrompt
