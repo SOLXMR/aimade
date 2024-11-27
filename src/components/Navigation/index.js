@@ -103,7 +103,7 @@ const NavLink = styled(Link)`
   }
 `;
 
-const Navigation = () => {
+const Navigation = ({ onDisconnect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
