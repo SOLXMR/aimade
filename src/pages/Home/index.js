@@ -671,12 +671,52 @@ const NavLink = styled.a`
   }
 `;
 
+const CopyButton = styled(motion.button)`
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background: transparent;
+  border: 2px solid ${({ theme }) => theme.colors.primary}80;
+  color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Share Tech Mono', monospace;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.primary}1a;
+    border-color: ${({ theme }) => theme.colors.primary};
+    text-shadow: 0 0 5px ${({ theme }) => theme.colors.primary}80;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+`;
+
+const CopyNotification = styled(motion.div)`
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid ${({ theme }) => theme.colors.primary}4d;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: ${({ theme }) => theme.colors.primary};
+  font-family: 'Share Tech Mono', monospace;
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+`;
+
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [hackerName, setHackerName] = useState('');
   const [walletAddress, setWalletAddress] = useState(null);
   const [error, setError] = useState('');
   const [showMatrixEntry, setShowMatrixEntry] = useState(false);
+  const [showCopyNotification, setShowCopyNotification] = useState(false);
 
   const getProvider = () => {
     if ('phantom' in window) {
@@ -794,6 +834,17 @@ const Home = () => {
     }
   };
 
+  const copyToClipboard = async () => {
+    const text = "5reTiMoyT5mCcBAWCkXzU4mZfFsEejvz1493zyQppump";
+    try {
+      await navigator.clipboard.writeText(text);
+      setShowCopyNotification(true);
+      setTimeout(() => setShowCopyNotification(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
   return (
     <HomeContainer>
       <BackgroundEffects>
@@ -843,6 +894,17 @@ const Home = () => {
           >
             Enter the Matrix
           </CTAButton>
+
+          <CopyButton
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={copyToClipboard}
+          >
+            Copy CA
+          </CopyButton>
 
           <ScrollPrompt
             initial={{ opacity: 0 }}
@@ -1012,6 +1074,15 @@ const Home = () => {
         )}
         {showMatrixEntry && (
           <MatrixEntry onComplete={handleMatrixComplete} />
+        )}
+        {showCopyNotification && (
+          <CopyNotification
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+          >
+            CA Copied to Clipboard
+          </CopyNotification>
         )}
       </AnimatePresence>
     </HomeContainer>
